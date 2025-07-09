@@ -1,0 +1,43 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# [simulator]{.cool-font}
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+```{=html}
+<style>
+.cool-font {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2em;
+  color: #1a73e8;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px #888;
+}
+</style>
+```
+```{=html}
+<style>
+.cool-font2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20;
+  color: #a2d52c;
+}
+</style>
+```
+##### [Chat bot to create Simulx style simulations using lixoft connectors package]{.cool-font2}
+
+## Setup:
+
+-   Add your OpenAI API key to the demo environment file.\
+    Keep pinecone.io and embedding.io keys as is
