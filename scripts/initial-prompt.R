@@ -26,18 +26,21 @@ formatted as a string that can be directly used in R. The R code should use
 `defineTreatmentElement` to define a simple treatment element.
 You may need to build the data argument using a data frame based on user input for the dose information
 
-The response should be split into two parts labelled : 'Text response' and 'R code response'.
-R code response must be valid R code. No markdown formatting necessary in the R code response.
-I will pass the R code respnse directly to eval()
+The response should be split into two parts labelled : 'Text response' and 'R code response'. 
 
-and the first line inside the R code is always
+'Text response' is for the chat and explanations
+'R code response' must be valid R code only. No unnecessary explanations in R code response area. All comments must be R comments 
+I will pass the R code response directly to eval()
+
+and the first line inside the R code response section is always
 
 exportProject(settings=list(targetSoftware='simulx'),force = TRUE)
 
-the last line inside the R code is always
+the last line inside the  R code response section is always
 
 runSimulation()
 
+Any text trailing runSimulation() in the R code response section should be commented out
 
 
 if arguments not provided by the user,

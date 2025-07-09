@@ -182,12 +182,17 @@ chat_bot_server <- function(
       # When done...
       future %...>% (function(response) {
         # Split text and code block
-        parts <- strsplit(response, "R code response:")[[1]]
+        parts <- strsplit(response, "(?i)R code response:", perl = TRUE)[[1]]
         explanation <- trimws(parts[1])
         code <- NULL
         
         if (length(parts) >= 2) {
-          code <- sub("^```R\\s*|\\s*```$", "", trimws(parts[2]))
+          # Remove leading code block markers like ```r or ```R (case-insensitive) and trailing ```
+          code <- trimws(parts[2])
+          # Remove opening code fence (```r or ```R) if present
+          code <- sub("^```[rR]?\\s*", "", code)
+          # Remove closing code fence if present
+          code <- sub("\\s*```$", "", code)
         }
         
         # Add explanation to chat
@@ -224,31 +229,39 @@ chat_bot_server <- function(
       
     
       observeEvent(input$run_button, {
-        
-        code <- generated_code()
-        
-        code <- str_replace(code,"```r",replacement = "#")
-        code <- str_replace_all(code,"```",replacement = "#")
-        
-        
-        
-        # Try to evaluate the code
-        result <- eval(parse(text = code), envir = .GlobalEnv)
-       
-        req(result)
-        valid_result <- eval(parse(text ="getSimulationResults()"), envir = .GlobalEnv) 
-    
-        
-        # Store the result 
-        simulation_results(valid_result)
-        
+        withProgress(message = "Running simulation...", value = 0, {
+          code <- generated_code()
+          incProgress(0.2, detail = "Preparing code...")
+          
+          code <- str_replace(code,"```r",replacement = "#")
+          code <- str_replace_all(code,"```",replacement = "#")
+          
+          # new
+          code_lines <- strsplit(code, "\n")[[1]]
+          run_line <- grep("runSimulation\\(\\)", code_lines)[1]
+          if (!is.na(run_line) && run_line < length(code_lines)) {
+            code_lines[(run_line + 1):length(code_lines)] <- paste0("# ", code_lines[(run_line + 1):length(code_lines)])
+          }
+          code <- paste(code_lines, collapse = "\n")
+          
+          
+          incProgress(0.2, detail = "Cleaning code...")
+          
+          # Try to evaluate the code
+          result <- eval(parse(text = code), envir = .GlobalEnv)
+          incProgress(0.3, detail = "Running simulation...")
+          
+          req(result)
+          valid_result <- eval(parse(text ="getSimulationResults()"), envir = .GlobalEnv)
+          incProgress(0.2, detail = "Extracting results...")
+          
+          # Store the result 
+          simulation_results(valid_result)
+          incProgress(0.1, detail = "Done!")
+        })
       })
       
-   
-        return(simulation_results)
-  
-      
-      
+      return(simulation_results)
       
   })
 }
