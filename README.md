@@ -1,11 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# <span >simulator</span>
+# simulator
 
-##### <span class="cool-font2">Chat bot to create Simulx style simulations using lixoft connectors package</span>
+#### Chat bot to create Simulx style simulations using lixoft connectors package
 
 ## Setup:
 
 - Add your OpenAI API key to the demo environment file.  
-  Keep pinecone.io and embedding.io keys as is 
+  Keep pinecone.io and embedding.io keys as is

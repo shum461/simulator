@@ -11,31 +11,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-# [simulator]{.cool-font}
+# simulator
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-
-
-<style>
-.cool-font {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2em;
-  color: #1a73e8;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px 2px #888;
-}
-</style>
-
-
-<style>
-.cool-font2 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 20;
-  color: #a2d52c;
-}
-</style>
-
-##### [Chat bot to create Simulx style simulations using lixoft connectors package]{.cool-font2}
+#### Chat bot to create Simulx style simulations using lixoft connectors package
 
 ## Setup:
 
