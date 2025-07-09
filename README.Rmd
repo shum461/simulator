@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# [simulator]{.cool-font} 
+# [simulator]{.cool-font}
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 
@@ -41,4 +41,3 @@ knitr::opts_chunk$set(
 
 -   Add your OpenAI API key to the demo environment file.\
     Keep pinecone.io and embedding.io keys as is
-

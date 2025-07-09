@@ -27,4 +27,4 @@
 ## Setup:
 
 - Add your OpenAI API key to the demo environment file.  
-  Keep pinecone.io and embedding.io keys as is
+  Keep pinecone.io and embedding.io keys as is 
